@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subjects | Nexus Educational Hub</title>
+<style>
+:root{
+  --navy:#16324f;--blue:#2f80ed;--light:#eef7ff;--mint:#dff7ef;
+  --gold:#ffca55;--white:#fff;--text:#24384b;--muted:#66788a;
+  --border:#dce9f5;--shadow:0 14px 35px rgba(22,50,79,.12);--radius:20px
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f8fbff;color:var(--text);line-height:1.65}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+.section{padding:68px 0}
+.section-title{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;color:var(--navy);margin:0 0 12px}
+.section-subtitle{color:var(--muted);max-width:760px;margin:0 0 34px}
+.site-header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav-wrap{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;color:var(--navy)}
+.logo-mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),#72b4ff);color:white;box-shadow:var(--shadow)}
+#menu-toggle{display:none}.menu-icon{display:none;font-size:1.6rem;cursor:pointer;padding:6px 10px;border-radius:10px;background:var(--light)}
+.nav-links{display:flex;list-style:none;gap:7px;margin:0;padding:0}
+.nav-links a{display:block;padding:10px 12px;border-radius:12px;font-weight:800;color:#3b5268}
+.nav-links a:hover,.nav-links a.active{background:var(--light);color:var(--blue)}
+.hero{padding:80px 0 58px;background:radial-gradient(circle at 90% 10%,rgba(47,128,237,.18),transparent 28%),radial-gradient(circle at 8% 20%,rgba(255,202,85,.24),transparent 26%),linear-gradient(180deg,#f4faff,#fff)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:54px}
+.badge{display:inline-flex;gap:8px;align-items:center;padding:8px 13px;border-radius:999px;background:var(--mint);font-weight:800;color:#18775b;margin-bottom:18px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.7rem);line-height:1.05;margin:0 0 20px;color:var(--navy)}
+.hero h1 span{color:var(--blue)}.hero p{font-size:1.12rem;color:var(--muted);max-width:660px}
+.btn-row{display:flex;flex-wrap:wrap;gap:13px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:none;cursor:pointer;padding:13px 19px;border-radius:14px;font-weight:800;font-family:inherit;transition:.25s}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 22px rgba(47,128,237,.25)}
+.btn-secondary{background:#fff;color:var(--navy);border:1px solid var(--border)}
+.btn:hover{transform:translateY(-3px)}
+.hero-art{background:#fff;border:1px solid var(--border);box-shadow:var(--shadow);border-radius:30px;padding:28px}
+.hero-art .screen{border-radius:20px;background:linear-gradient(135deg,#dceeff,#f8fbff);padding:22px}
+.emoji-row{font-size:3rem;display:flex;justify-content:space-around;padding:16px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:17px}
+.stat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px;text-align:center}
+.stat strong{display:block;color:var(--blue);font-size:1.35rem}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:0 8px 24px rgba(22,50,79,.07);transition:.25s}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.card-icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:var(--light);font-size:1.6rem;margin-bottom:15px}
+.card h3{font-size:1.25rem;color:var(--navy);margin:0 0 9px}
+.card p{color:var(--muted);margin:0 0 15px}.link{color:var(--blue);font-weight:800}
+.band{background:linear-gradient(135deg,var(--navy),#244f76);color:#fff}.band .section-title,.band .section-subtitle{color:#fff}
+.featured{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:center}
+.featured-visual{min-height:260px;border-radius:24px;background:linear-gradient(135deg,#ffdf8f,#fff1c9);display:grid;place-items:center;font-size:7rem}
+.page-hero{padding:58px 0;background:linear-gradient(135deg,#eaf5ff,#f9fcff);border-bottom:1px solid var(--border)}
+.page-hero h1{font-size:clamp(2.2rem,5vw,3.5rem);color:var(--navy);margin:0}.page-hero p{color:var(--muted);max-width:760px}
+.subject-card ul,.resource-list{padding-left:20px;color:var(--muted)}.subject-card li{margin:7px 0}
+.resource-box{background:var(--light);border-left:5px solid var(--blue);padding:18px;border-radius:14px;margin-top:14px}
+.flashcard{height:210px;perspective:1000px;cursor:pointer}
+.flashcard-inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.flashcard:hover .flashcard-inner,.flashcard.flipped .flashcard-inner{transform:rotateY(180deg)}
+.flash-front,.flash-back{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;border-radius:20px;backface-visibility:hidden;border:1px solid var(--border)}
+.flash-front{background:#fff}.flash-back{background:var(--navy);color:#fff;transform:rotateY(180deg)}
+form{background:#fff;border:1px solid var(--border);padding:26px;border-radius:var(--radius);box-shadow:var(--shadow)}
+label{display:block;font-weight:800;color:var(--navy);margin:14px 0 6px}
+input,textarea,select{width:100%;padding:12px 13px;border:1px solid #c9d9e8;border-radius:12px;font:inherit;background:#fbfdff}
+textarea{min-height:130px;resize:vertical}
+.quiz-option{display:flex;gap:10px;align-items:flex-start;padding:10px;background:#f6faff;border-radius:10px;margin:8px 0}
+.quiz-option input{width:auto;margin-top:6px}
+.result{display:none;margin-top:18px;padding:16px;border-radius:14px;background:var(--mint);font-weight:700}
+.planner{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden}
+.planner th,.planner td{border:1px solid var(--border);padding:12px;text-align:left}.planner th{background:var(--navy);color:#fff}
+.story{display:flex;gap:16px;align-items:flex-start}.avatar{flex:0 0 52px;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--gold);font-size:1.5rem}
+.challenge{border-left:5px solid var(--gold)}.profile{text-align:center}.profile .avatar{margin:0 auto 12px;width:84px;height:84px;font-size:2.4rem}
+.check-list{list-style:none;padding:0}.check-list li{margin:10px 0;padding-left:28px;position:relative}.check-list li::before{content:"✓";position:absolute;left:0;color:#1f9d74;font-weight:900}
+.carousel{position:relative;overflow:hidden;border-radius:24px;box-shadow:var(--shadow);height:360px}
+.slides{display:flex;width:300%;height:100%;animation:slide 15s infinite}
+.slide{width:33.333%;display:grid;place-items:center;text-align:center;padding:35px;color:white}
+.slide:nth-child(1){background:linear-gradient(135deg,#2f80ed,#69a9ff)}.slide:nth-child(2){background:linear-gradient(135deg,#1f9d74,#64d7b3)}.slide:nth-child(3){background:linear-gradient(135deg,#8b5cf6,#c39bff)}
+.slide span{font-size:5rem}@keyframes slide{0%,28%{transform:translateX(0)}33%,61%{transform:translateX(-33.333%)}66%,94%{transform:translateX(-66.666%)}100%{transform:translateX(0)}}
+.footer{background:#10283e;color:#dbe9f5;padding:46px 0 20px}.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}.footer h3{color:white;margin-top:0}.footer a{display:block;margin:7px 0;color:#dbe9f5}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:28px;padding-top:18px;text-align:center}.back-top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff;font-weight:900;box-shadow:var(--shadow)}
+.post-list{margin-top:22px}.post{background:#fff;border:1px solid var(--border);padding:18px;border-radius:16px;margin:12px 0}
+@media(max-width:850px){.hero-grid,.featured,.grid-3,.grid-2,.footer-grid{grid-template-columns:1fr}.menu-icon{display:block}.nav-links{position:absolute;left:0;right:0;top:76px;background:#fff;display:none;flex-direction:column;padding:15px;border-bottom:1px solid var(--border)}#menu-toggle:checked~.nav-links{display:flex}.nav-links a{text-align:center}.hero{padding-top:55px}}
+@media(max-width:560px){.stat-grid{grid-template-columns:1fr}.section{padding:52px 0}.hero h1{font-size:2.45rem}.carousel{height:310px}}
+</style>
+</head>
+<body>
+
+<a id="top"></a>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="logo" href="index.html"><span class="logo-mark">📘</span> Nexus Educational Hub</a>
+    <input type="checkbox" id="menu-toggle">
+    <label class="menu-icon" for="menu-toggle">☰</label>
+    <ul class="nav-links"><li><a href="index.html" class="">Home</a></li><li><a href="subjects.html" class="active">Subjects</a></li><li><a href="study-tools.html" class="">Study Tools</a></li><li><a href="community.html" class="">Community</a></li><li><a href="about.html" class="">About Us</a></li></ul>
+  </div>
+</header>
+
+
+<main><section class="page-hero"><div class="container"><h1>Subject Resources</h1><p>Choose a subject and use the recommended articles, videos, courses and practice activities.</p></div></section>
+<section class="section"><div class="container"><div class="grid-2">
+<article class="card subject-card"><div class="card-icon">➗</div><h3>Mathematics</h3><p>Strengthen algebra, geometry, statistics and calculus skills.</p><ul><li><a class="link" href="https://www.khanacademy.org/math" target="_blank">Khan Academy Mathematics</a></li><li><a class="link" href="https://www.mathsisfun.com/" target="_blank">Math Is Fun tutorials</a></li><li>Practice: solve five mixed equations each day.</li></ul><div class="resource-box"><strong>Suggested textbook:</strong> Cambridge Mathematics for Year 13.</div></article>
+<article class="card subject-card"><div class="card-icon">🔬</div><h3>Science</h3><p>Explore physics, chemistry, biology and scientific investigations.</p><ul><li><a class="link" href="https://www.khanacademy.org/science" target="_blank">Khan Academy Science</a></li><li><a class="link" href="https://phet.colorado.edu/" target="_blank">PhET simulations</a></li><li>Practice: explain one scientific concept in your own words.</li></ul><div class="resource-box"><strong>Suggested resource:</strong> OpenStax science textbooks.</div></article>
+<article class="card subject-card"><div class="card-icon">✍️</div><h3>English</h3><p>Improve reading comprehension, grammar, speaking and writing.</p><ul><li><a class="link" href="https://learnenglish.britishcouncil.org/" target="_blank">British Council LearnEnglish</a></li><li><a class="link" href="https://owl.purdue.edu/" target="_blank">Purdue Writing Lab</a></li><li>Practice: write one paragraph and edit it for clarity.</li></ul><div class="resource-box"><strong>Suggested reading:</strong> Short stories, newspaper features and essays.</div></article>
+<article class="card subject-card"><div class="card-icon">💻</div><h3>Computer Studies</h3><p>Learn programming, databases, web design and information systems.</p><ul><li><a class="link" href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a></li><li><a class="link" href="https://www.w3schools.com/" target="_blank">W3Schools tutorials</a></li><li>Practice: create a small HTML page and style it.</li></ul><div class="resource-box"><strong>Suggested course:</strong> Introductory web development.</div></article>
+<article class="card subject-card"><div class="card-icon">🌏</div><h3>Geography</h3><p>Understand places, environments, populations and global issues.</p><ul><li><a class="link" href="https://education.nationalgeographic.org/" target="_blank">National Geographic Education</a></li><li><a class="link" href="https://earth.google.com/web/" target="_blank">Google Earth</a></li><li>Practice: analyse a map, graph or local issue.</li></ul><div class="resource-box"><strong>Suggested activity:</strong> Create a case study about Fiji.</div></article>
+<article class="card subject-card"><div class="card-icon">🌱</div><h3>Agriculture</h3><p>Study crops, livestock, soil, sustainability and agribusiness.</p><ul><li><a class="link" href="https://www.fao.org/home/en" target="_blank">FAO learning resources</a></li><li><a class="link" href="https://www.britannica.com/science/agriculture" target="_blank">Agriculture overview</a></li><li>Practice: design a simple crop production plan.</li></ul><div class="resource-box"><strong>Suggested topic:</strong> Climate-smart agriculture in the Pacific.</div></article>
+</div></div></section></main>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3>Nexus Educational Hub</h3><p>Empowering students through accessible resources, practical study tools and a supportive learning community.</p></div>
+      <div><h3>Explore</h3><a href="subjects.html">Subjects</a><a href="study-tools.html">Study Tools</a><a href="community.html">Community</a></div>
+      <div><h3>Contact</h3><p>Email: ishpreet.s.singh21@gmail.com</p><p>Fiji • Year 13 Computer Studies</p></div>
+    </div>
+    <div class="footer-bottom">© 2026 Nexus Educational Hub. Created for educational purposes.</div>
+  </div>
+</footer>
+<a class="back-top" href="#top">↑</a>
+
+<script></script>
+</body>
+</html>
